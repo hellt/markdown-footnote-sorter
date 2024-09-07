@@ -6,4 +6,4 @@ COPY fnsort.py /app
 
 WORKDIR /work
 
-ENTRYPOINT ["python", "/app/fn-sort2.py"]
+ENTRYPOINT ["python", "/app/fnsort.py"]
