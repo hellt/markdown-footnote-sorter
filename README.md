@@ -14,3 +14,17 @@ based on "Tidying Markdown reference links" by Dr. Drang available at:
 
 Do *not* place footnote reference links at the start of a line, bad things will
 happen, your footnotes will be eaten by a grue.
+
+## How to use?
+
+You can use the container image provided:
+
+```bash
+docker run --rm -v $(pwd):/work ghcr.io/hellt/markdown-footnote-sorter path/to/doc.md
+```
+
+Or download the script and put it in your `$PATH`:
+
+```bash
+curl -sL https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py
+```
