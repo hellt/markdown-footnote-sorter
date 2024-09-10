@@ -55,7 +55,7 @@ class TestDuplicates(unittest.TestCase):
         # self.maxDiff = None
 
 
-    def test_replace_references_with_duplicates(self):
+    def test_replace_references_with_dups(self):
         """ Multiple reference replacements with duplicate tags """
         # find all matches
         matches = fnsort.link.finditer(self.text)
@@ -74,7 +74,7 @@ class TestDuplicates(unittest.TestCase):
             )
 
 
-    def test_footnote_sort(self):
+    def test_footnote_sort_with_dups(self):
         """ Entire footnote sort process with duplicate tags """
         self.assertEqual(fnsort.sort_footnotes(self.text), self.sorted_text)
 
@@ -94,8 +94,8 @@ class TestFootnoteMustBeLast(unittest.TestCase):
         # self.maxDiff = None
 
 
-    def test_footnote_sort(self):
-        """ Entire footnote sort process with text after the footnotes """
+    def test_footnote_sort_trailing_text(self):
+        """ [negative test] Entire footnote sort process with text after the footnotes """
 
         """
         negative test
