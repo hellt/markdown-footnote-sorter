@@ -79,5 +79,37 @@ class TestDuplicates(unittest.TestCase):
         self.assertEqual(fnsort.sort_footnotes(self.text), self.sorted_text)
 
 
+class TestFootnoteMustBeLast(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        path = "tests/fn_must_be_last"
+
+        with open(f"{path}/must_be_last.md") as fh:
+            self.text = fh.read()
+
+        with open(f"{path}/must_be_last_sorted.md") as fh:
+            self.sorted_text = fh.read()
+
+        # allow for full diff output
+        # self.maxDiff = None
+
+
+    def test_footnote_sort(self):
+        """ Entire footnote sort process with text after the footnotes """
+
+        """
+        negative test
+
+        text after the last footnote will be captured as part of that
+          footnote creating a choppy looking list
+
+        in short this is not expected to return the desired output
+
+        just so happened to luck out that the last footnote reference of the
+            "duplicates" example was indeed the last footnote :shrug:
+        """
+        self.assertNotEqual(fnsort.sort_footnotes(self.text), self.sorted_text)
+
+
 if __name__ == "__main__":
     unittest.main()
