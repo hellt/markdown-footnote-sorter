@@ -37,7 +37,7 @@ It is recommended to verify tests are successful before making any code changes.
 For minimal dependencies, the "batteries included" Python unittest framework is utilized. (Other testing frameworks could be considered should additional testing features be needed.)
 
 ### Running Unit Tests
-Discover and run unit tests
+Discover and run unit tests (from the top level of the project directory)
 
 `python -m unittest discover`
 
