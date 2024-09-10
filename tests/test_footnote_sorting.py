@@ -1,0 +1,83 @@
+import unittest
+
+import fnsort
+
+class TestDefaults(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        # example markdown files intentionally have had trailing EOL trimmed
+        #   from the end of the file (EOF)
+
+        path = "tests/default"
+
+        with open(f"{path}/example.md") as fh:
+            self.text = fh.read()
+
+        with open(f"{path}/example_sorted.md") as fh:
+            self.sorted_text = fh.read()
+
+        # allow for full diff output
+        # self.maxDiff = None
+
+
+    def test_replace_reference(self):
+        """ Inline reference replacement """
+        # use the link regex from the fnsort import
+           
+        # "search" function only returns the first match
+        match = fnsort.link.search(self.text)
+        order = ["1", "3", "4", "2"]
+
+        # hedgehogs[^1]
+        self.assertEqual(
+            fnsort.refrepl(match, order),
+            "s[^1]"
+        )
+
+
+    def test_footnote_sort(self):
+        """ Entire footnote sort process """
+        self.assertEqual(fnsort.sort_footnotes(self.text), self.sorted_text)
+
+
+class TestDuplicates(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        path = "tests/duplicates"
+
+        with open(f"{path}/duplicates.md") as fh:
+            self.text = fh.read()
+
+        with open(f"{path}/duplicates_sorted.md") as fh:
+            self.sorted_text = fh.read()
+
+        # allow for full diff output
+        # self.maxDiff = None
+
+
+    def test_replace_references_with_duplicates(self):
+        """ Multiple reference replacements with duplicate tags """
+        # find all matches
+        matches = fnsort.link.finditer(self.text)
+        order = ["1", "3", "2", "5", "4"]
+
+        # should be seven regex matches in duplicates.md
+        expected = [
+            "s[^1]", "s[^2]", " [^1]", "s[^3]", "s[^4]", "s[^5]", " [^2]"
+        ]
+
+        # multiple assertions
+        for i, match in enumerate(matches):
+            self.assertEqual(
+                fnsort.refrepl(match, order),
+                expected[i]
+            )
+
+
+    def test_footnote_sort(self):
+        """ Entire footnote sort process with duplicate tags """
+        self.assertEqual(fnsort.sort_footnotes(self.text), self.sorted_text)
+
+
+if __name__ == "__main__":
+    unittest.main()
