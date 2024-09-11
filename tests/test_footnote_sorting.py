@@ -13,8 +13,8 @@ class TestDefaults(unittest.TestCase):
         with open(f"{path}/example.md") as fh:
             self.text = fh.read()
 
-        with open(f"{path}/example_sorted.md") as fh:
-            self.sorted_text = fh.read()
+        with open(f"{path}/example_expected.md") as fh:
+            self.expected_text = fh.read()
 
         # allow for full diff output
         # self.maxDiff = None
@@ -37,7 +37,7 @@ class TestDefaults(unittest.TestCase):
 
     def test_footnote_sort(self):
         """ Entire footnote sort process """
-        self.assertEqual(fnsort.sort_footnotes(self.text), self.sorted_text)
+        self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
 
 
 class TestDuplicates(unittest.TestCase):
@@ -48,8 +48,8 @@ class TestDuplicates(unittest.TestCase):
         with open(f"{path}/duplicates.md") as fh:
             self.text = fh.read()
 
-        with open(f"{path}/duplicates_sorted.md") as fh:
-            self.sorted_text = fh.read()
+        with open(f"{path}/duplicates_expected.md") as fh:
+            self.expected_text = fh.read()
 
         # allow for full diff output
         # self.maxDiff = None
@@ -76,10 +76,10 @@ class TestDuplicates(unittest.TestCase):
 
     def test_footnote_sort_with_dups(self):
         """ Entire footnote sort process with duplicate tags """
-        self.assertEqual(fnsort.sort_footnotes(self.text), self.sorted_text)
+        self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
 
 
-class TestFootnoteMustBeLast(unittest.TestCase):
+class TestFootnotesMustBeLast(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         path = "tests/fn_must_be_last"
@@ -87,8 +87,8 @@ class TestFootnoteMustBeLast(unittest.TestCase):
         with open(f"{path}/must_be_last.md") as fh:
             self.text = fh.read()
 
-        with open(f"{path}/must_be_last_sorted.md") as fh:
-            self.sorted_text = fh.read()
+        with open(f"{path}/must_be_last_expected.md") as fh:
+            self.expected_text = fh.read()
 
         # allow for full diff output
         # self.maxDiff = None
@@ -108,7 +108,7 @@ class TestFootnoteMustBeLast(unittest.TestCase):
         just so happened to luck out that the last footnote reference of the
             "duplicates" example was indeed the last footnote :shrug:
         """
-        self.assertNotEqual(fnsort.sort_footnotes(self.text), self.sorted_text)
+        self.assertNotEqual(fnsort.sort_footnotes(self.text), self.expected_text)
 
 
 if __name__ == "__main__":
