@@ -1,6 +1,20 @@
+import argparse
 import unittest
 
 import fnsort
+
+
+"""
+def enable_adjacent_arg(self):
+    # technically there is also a "file" kwarg
+    args = {'adjacent': True}
+    self.options = argparse.Namespace(**args)
+"""
+
+def set_command_line_args(args):
+    """ Set (what would otherwise be) command-line arguments """
+    return argparse.Namespace(**args)
+
 
 class TestDefaults(unittest.TestCase):
     @classmethod
@@ -15,6 +29,10 @@ class TestDefaults(unittest.TestCase):
 
         with open(f"{path}/example_expected.md") as fh:
             self.expected_text = fh.read()
+
+        # technically there is also a "file" kwarg by default
+        args = {'adjacent': False}
+        self.options = set_command_line_args(args)
 
         # allow for full diff output
         # self.maxDiff = None
@@ -37,7 +55,7 @@ class TestDefaults(unittest.TestCase):
 
     def test_footnote_sort(self):
         """ Entire footnote sort process """
-        self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
+        self.assertEqual(fnsort.sort_footnotes(self.text, self.options), self.expected_text)
 
 
 class TestDuplicates(unittest.TestCase):
@@ -50,6 +68,10 @@ class TestDuplicates(unittest.TestCase):
 
         with open(f"{path}/duplicates_expected.md") as fh:
             self.expected_text = fh.read()
+
+        # technically there is also a "file" kwarg by default
+        args = {'adjacent': False}
+        self.options = set_command_line_args(args)
 
         # allow for full diff output
         # self.maxDiff = None
@@ -76,7 +98,7 @@ class TestDuplicates(unittest.TestCase):
 
     def test_footnote_sort_with_dups(self):
         """ Entire footnote sort process with duplicate tags """
-        self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
+        self.assertEqual(fnsort.sort_footnotes(self.text, self.options), self.expected_text)
 
 
 class TestFootnotesMustBeLast(unittest.TestCase):
@@ -89,6 +111,10 @@ class TestFootnotesMustBeLast(unittest.TestCase):
 
         with open(f"{path}/must_be_last_expected.md") as fh:
             self.expected_text = fh.read()
+
+        # technically there is also a "file" kwarg by default
+        args = {'adjacent': False}
+        self.options = set_command_line_args(args)
 
         # allow for full diff output
         # self.maxDiff = None
@@ -108,7 +134,34 @@ class TestFootnotesMustBeLast(unittest.TestCase):
         just so happened to luck out that the last footnote reference of the
             "duplicates" example was indeed the last footnote :shrug:
         """
-        self.assertNotEqual(fnsort.sort_footnotes(self.text), self.expected_text)
+        self.assertNotEqual(fnsort.sort_footnotes(self.text, self.options), self.expected_text)
+
+
+class TestAdjacentFootnotes(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        # example markdown files intentionally have had trailing EOL trimmed
+        #   from the end of the file (EOF)
+
+        path = "tests/adjacent"
+
+        with open(f"{path}/adjacent.md") as fh:
+            self.text = fh.read()
+
+        with open(f"{path}/adjacent_expected.md") as fh:
+            self.expected_text = fh.read()
+
+        # technically there is also a "file" kwarg by default
+        args = {'adjacent': True}
+        self.options = set_command_line_args(args)
+
+        # allow for full diff output
+        self.maxDiff = None
+
+
+    def test_adjacent_footnote_sort(self):
+        """ Entire footnote sort process with adjacent footnote references """
+        self.assertEqual(fnsort.sort_footnotes(self.text, self.options), self.expected_text)
 
 
 if __name__ == "__main__":

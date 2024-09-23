@@ -56,21 +56,27 @@ def replace_reference(m, order):
 
 
 def separate_adjacent_footnotes(text):
-    # add space between two inline footnotes (ex: [^1][^2] becomes [^1] [^2])
-    inline_note = re.compile(r"[^\s]\[\^(\w+)\]")
+    # add space between two inline footnotes as long as a space isn't present
+    #   ex: [^1][^2] becomes [^1] [^2]
+
+    # inline refs that do NOT begin with white space
+    inline_note = re.compile(r"([^\s]\[\^\w+\])")
 
     notes = inline_note.findall(text)
 
     for note in notes:
         # matches cannot be at the beginning of a line
-        note_re = r"(?<!^)\[\^" + re.escape(note) + r"\]"
+        note_re = r"(?<!^)" + re.escape(note)
 
-        # slice to remove the negative look behind regex and
-        #   replace backslash escape chars
+        # slice regex to remove the negative look behind and
+        #   pattern replace backslash escape chars
         repl = note_re[6:].replace("\\", "")
 
         # print(f"\nFindall: {re.findall(note_re, text, flags=re.MULTILINE)}\n")
-        text = re.sub(note_re, f" {repl}", text, flags=re.MULTILINE)
+
+        # slice the string to separate preceding character from inline reference
+        #   ex: s[^4]
+        text = re.sub(note_re, f"{repl[0]} {repl[1:]}", text, flags=re.MULTILINE)
     
     return text
 
