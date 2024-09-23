@@ -67,7 +67,7 @@ def sort_footnotes(text):
 
     # Make a list of the footnote-references in order of appearance the original footnotes in text.
     # this is not the order of the footnote contents, but the order of the footnote references in the text.
-    newlabels = ["[^%s]: %s" % (i + 1, labels[j]) for (i, j) in enumerate(order)]
+    newlabels = [f"[^{i+1}]: {labels[j]}" for (i, j) in enumerate(order)]
     # print(f"newlabels: {newlabels}")
 
     # Remove the old footnote-references and put the new ones at the end of the text.
