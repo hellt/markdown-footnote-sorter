@@ -58,9 +58,7 @@ def sort_footnotes(text):
     # Determine the order of the footnote-links in the text. If a link is used
     # more than once, its order is its first position.
     order = []
-    for i in links:
-        if order.count(i[1]) == 0:
-            order.append(i[1])
+    [order.append(i[1]) for i in links if i[1] not in order]
 
     # print(f"order: {order}")
 
