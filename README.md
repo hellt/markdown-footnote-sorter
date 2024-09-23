@@ -29,20 +29,6 @@ Or download the script and put it in your `$PATH`:
 curl -sL https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py
 ```
 
-## Development and Testing
-All code modifications should be accompanied by unit tests.
 
-It is recommended to verify tests are successful before making any code changes. From there make your changes and run the unit tests to validate there is not code regression.
-
-For minimal dependencies, the "batteries included" Python unittest framework is utilized. (Other testing frameworks could be considered should additional testing features be needed.)
-
-### Running Unit Tests
-Discover and run unit tests (from the top level of the project directory)
-
-`python -m unittest discover`
-
-Verbose version of unit test discovery
-
-`python -m unittest discover -v`
-
-For additional command line options, refer to the [official Python unittest documentation](https://docs.python.org/3/library/unittest.html#command-line-interface).
+## Contributing
+For information about contributing to this project, see the [contributing guidelines](CONTRIBUTING.md).
