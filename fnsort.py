@@ -28,6 +28,15 @@ def parse_arguments():
         default="-",
         help="Input file to process (use - for stdin)",
     )
+
+    parser.add_argument(
+        "--adjacent",
+        nargs="?",
+        type=bool,
+        default=False,
+        help="Fix adjacent footnotes by adding a space between them",
+    )
+    
     return parser.parse_args()
 
 
@@ -48,7 +57,31 @@ def replace_reference(m, order):
     return f"{m.group(0)[:1]}[^{order.index(m.group(2)) + 1}]"
 
 
-def sort_footnotes(text):
+def separate_adjacent_footnotes(text):
+    # add space between two inline footnotes (ex: [^1][^2] becomes [^1] [^2])
+    inline_note = re.compile(r"[^\s]\[\^(\w+)\]")
+
+    notes = inline_note.findall(text)
+
+    for note in notes:
+        # matches cannot be at the beginning of a line
+        note_re = r"(?<!^)\[\^" + re.escape(note) + r"\]"
+
+        # slice to remove the negative look behind regex and
+        #   replace backslash escape chars
+        repl = note_re[6:].replace("\\", "")
+
+        # print(f"\nFindall: {re.findall(note_re, text, flags=re.MULTILINE)}\n")
+        text = re.sub(note_re, f" {repl}", text, flags=re.MULTILINE)
+    
+    return text
+
+
+def sort_footnotes(text, options):
+    if "adjacent" in options:
+        text = separate_adjacent_footnotes(text)
+    # print(text)
+
     # removes the last newline from EOF so there is no EOL on the last line
     text = text.rstrip()
 
@@ -84,7 +117,7 @@ def main():
     args = parse_arguments()
     with open(args.file, "r+") as file:
         text = file.read()
-        processed_text = sort_footnotes(text)
+        processed_text = sort_footnotes(text=text, options=args)
         file.seek(0)
         file.write(processed_text)
         file.truncate()
