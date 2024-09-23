@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Test, Build and Push Docker Image
 
 "on":
   push:
@@ -8,7 +8,7 @@ name: Build and Push Docker Image
   pull_request:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -18,12 +18,12 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      
+
       - name: Run Python unit tests
         run: python -m unittest discover -s ${{ env.test_dir }}
 
@@ -32,7 +32,7 @@ jobs:
     permissions:
       packages: write
     needs:
-      - "build"
+      - "test"
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
