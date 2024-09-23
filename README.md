@@ -28,3 +28,7 @@ Or download the script and put it in your `$PATH`:
 ```bash
 curl -sL https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py
 ```
+
+
+## Contributing
+For information about contributing to this project, see the [contributing guidelines](CONTRIBUTING.md).
