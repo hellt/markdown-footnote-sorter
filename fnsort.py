@@ -45,7 +45,7 @@ label = re.compile(r"^\[\^([^\]]+)\]:\s*((?:(?!\n\[)[\s\S])*)", re.MULTILINE)
 def refrepl(m, order):
     # Rewrite reference links with the reordered link numbers. Insert the first
     # character from the footnote reference link right before the new link.
-    return "%s[^%s]" % (m.group(0)[:1], order.index(m.group(2)) + 1)
+    return f"{m.group(0)[:1]}[^{order.index(m.group(2)) + 1}]"
 
 
 def sort_footnotes(text):
