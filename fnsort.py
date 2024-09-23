@@ -31,9 +31,7 @@ def parse_arguments():
 
     parser.add_argument(
         "--adjacent",
-        nargs="?",
-        type=bool,
-        default=False,
+        action='store_true',
         help="Fix adjacent footnotes by adding a space between them",
     )
     
@@ -78,7 +76,7 @@ def separate_adjacent_footnotes(text):
 
 
 def sort_footnotes(text, options):
-    if "adjacent" in options:
+    if options.adjacent:
         text = separate_adjacent_footnotes(text)
     # print(text)
 
