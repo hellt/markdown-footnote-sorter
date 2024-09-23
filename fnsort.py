@@ -49,6 +49,9 @@ def refrepl(m, order):
 
 
 def sort_footnotes(text):
+    # removes the last newline from EOF so there is no EOL on the last line
+    text = text.rstrip()
+
     links = link.findall(text)
     # print(f"links: {links}")
 
