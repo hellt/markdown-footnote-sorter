@@ -7,7 +7,7 @@ Wrens [^1] are a family of brown birds of which there are 88 species.
 Wrens are medium-small to very small birds. The Eurasian wren is among the smallest birds in its range, while the smaller species from the Americas are among the smallest passerines in that part of the world. [^2]
 
 ## Coloration
-The dominating colors of their plumage are generally drab, composed of gray, brown, black, and white, and most species show some barring, especially on the tail or wings.
+The dominating colors of their plumage are generally drab, composed of gray, brown, black, and white, and most species show some barring, especially on the tail or wings [^2].
 
 ## Diet
 Wrens are primarily insectivorous, eating insects, spiders and other small invertebrates, but many species also eat vegetable matter and some eat small frogs and lizards [^1].
