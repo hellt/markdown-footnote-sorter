@@ -4,13 +4,6 @@ import unittest
 import fnsort
 
 
-"""
-def enable_adjacent_arg(self):
-    # technically there is also a "file" kwarg
-    args = {"adjacent": True}
-    self.args = argparse.Namespace(**args)
-"""
-
 def set_command_line_args(args):
     """ Set (what would otherwise be) command-line arguments """
     return argparse.Namespace(**args)
