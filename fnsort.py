@@ -31,7 +31,7 @@ def parse_arguments():
 
     parser.add_argument(
         "--adjacent",
-        action='store_true',
+        action="store_true",
         help="Fix adjacent footnotes by adding a space between them",
     )
     
@@ -55,7 +55,7 @@ def replace_reference(m, order):
     return f"{m.group(0)[:1]}[^{order.index(m.group(2)) + 1}]"
 
 
-def separate_adjacent_footnotes(text):
+def space_adjacent_footnotes(text):
     # add space between two inline footnotes as long as a space isn't present
     #   ex: [^1][^2] becomes [^1] [^2]
 
@@ -81,11 +81,7 @@ def separate_adjacent_footnotes(text):
     return text
 
 
-def sort_footnotes(text, options):
-    if options.adjacent:
-        text = separate_adjacent_footnotes(text)
-    # print(text)
-
+def sort_footnotes(text):
     # removes the last newline from EOF so there is no EOL on the last line
     text = text.rstrip()
 
@@ -121,6 +117,10 @@ def main():
     args = parse_arguments()
     with open(args.file, "r+") as file:
         text = file.read()
+
+        if args.adjacent:
+            text = space_adjacent_footnotes(text)
+
         processed_text = sort_footnotes(text=text, options=args)
         file.seek(0)
         file.write(processed_text)

@@ -7,8 +7,8 @@ import fnsort
 """
 def enable_adjacent_arg(self):
     # technically there is also a "file" kwarg
-    args = {'adjacent': True}
-    self.options = argparse.Namespace(**args)
+    args = {"adjacent": True}
+    self.args = argparse.Namespace(**args)
 """
 
 def set_command_line_args(args):
@@ -31,8 +31,10 @@ class TestDefaults(unittest.TestCase):
             self.expected_text = fh.read()
 
         # technically there is also a "file" kwarg by default
-        args = {'adjacent': False}
-        self.options = set_command_line_args(args)
+        args = {"adjacent": False}
+        self.args = set_command_line_args(args)
+        if self.args.adjacent:
+            self.text = fnsort.space_adjacent_footnotes(self.text)
 
         # allow for full diff output
         # self.maxDiff = None
@@ -55,7 +57,7 @@ class TestDefaults(unittest.TestCase):
 
     def test_footnote_sort(self):
         """ Entire footnote sort process """
-        self.assertEqual(fnsort.sort_footnotes(self.text, self.options), self.expected_text)
+        self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
 
 
 class TestDuplicates(unittest.TestCase):
@@ -70,8 +72,10 @@ class TestDuplicates(unittest.TestCase):
             self.expected_text = fh.read()
 
         # technically there is also a "file" kwarg by default
-        args = {'adjacent': False}
-        self.options = set_command_line_args(args)
+        args = {"adjacent": False}
+        self.args = set_command_line_args(args)
+        if self.args.adjacent:
+            self.text = fnsort.space_adjacent_footnotes(self.text)
 
         # allow for full diff output
         # self.maxDiff = None
@@ -98,7 +102,7 @@ class TestDuplicates(unittest.TestCase):
 
     def test_footnote_sort_with_dups(self):
         """ Entire footnote sort process with duplicate tags """
-        self.assertEqual(fnsort.sort_footnotes(self.text, self.options), self.expected_text)
+        self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
 
 
 class TestFootnotesMustBeLast(unittest.TestCase):
@@ -113,8 +117,10 @@ class TestFootnotesMustBeLast(unittest.TestCase):
             self.expected_text = fh.read()
 
         # technically there is also a "file" kwarg by default
-        args = {'adjacent': False}
-        self.options = set_command_line_args(args)
+        args = {"adjacent": False}
+        self.args = set_command_line_args(args)
+        if self.args.adjacent:
+            self.text = fnsort.space_adjacent_footnotes(self.text)
 
         # allow for full diff output
         # self.maxDiff = None
@@ -130,11 +136,8 @@ class TestFootnotesMustBeLast(unittest.TestCase):
           footnote creating a choppy looking list
 
         in short this is not expected to return the desired output
-
-        just so happened to luck out that the last footnote reference of the
-            "duplicates" example was indeed the last footnote :shrug:
         """
-        self.assertNotEqual(fnsort.sort_footnotes(self.text, self.options), self.expected_text)
+        self.assertNotEqual(fnsort.sort_footnotes(self.text), self.expected_text)
 
 
 class TestAdjacentFootnotes(unittest.TestCase):
@@ -152,16 +155,30 @@ class TestAdjacentFootnotes(unittest.TestCase):
             self.expected_text = fh.read()
 
         # technically there is also a "file" kwarg by default
-        args = {'adjacent': True}
-        self.options = set_command_line_args(args)
+        args = {"adjacent": True}
+        self.args = set_command_line_args(args)
 
         # allow for full diff output
-        self.maxDiff = None
+        # self.maxDiff = None
+
+
+    def test_adjacent_inline_reference_spacing(self):
+        """ Test spacing out adjacent inline references """
+        with open(f"tests/adjacent/adjacent_spacing.md") as fh:
+            spacing_text = fh.read()
+
+        self.assertEqual(
+            fnsort.space_adjacent_footnotes(self.text),
+            spacing_text
+        )
 
 
     def test_adjacent_footnote_sort(self):
         """ Entire footnote sort process with adjacent footnote references """
-        self.assertEqual(fnsort.sort_footnotes(self.text, self.options), self.expected_text)
+        if self.args.adjacent:
+            self.text = fnsort.space_adjacent_footnotes(self.text)
+
+        self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
 
 
 if __name__ == "__main__":
