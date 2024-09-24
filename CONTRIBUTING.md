@@ -1,6 +1,6 @@
 # Contributing
 
-🎉 Thank you for your interest in contributing to this project! 🎉
+:tada: Thank you for your interest in contributing to this project! :tada:
 
 A couple of quick items:
 
