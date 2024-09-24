@@ -10,6 +10,6 @@ Fifteen of the twenty-one species are native to the United States. The Texas hor
 
 [^1]: the more spiky, the better
 [^3]: really cool
+[^4]: it's hot in the desert
 [^2]: a bit of a misnomer, right?
 [^5]: not to be confused with antlers, since horns don't fall off each year
-[^4]: it's hot in the desert
