@@ -55,7 +55,7 @@ def replace_reference(m, order):
     return f"{m.group(0)[:1]}[^{order.index(m.group(2)) + 1}]"
 
 
-def space_adjacent_footnotes(text):
+def space_adjacent_references(text):
     # add space between two inline footnotes as long as a space isn't present
     #   ex: [^1][^2] becomes [^1] [^2]
 
@@ -119,7 +119,7 @@ def main():
         text = file.read()
 
         if args.adjacent:
-            text = space_adjacent_footnotes(text)
+            text = space_adjacent_references(text)
 
         processed_text = sort_footnotes(text=text, options=args)
         file.seek(0)

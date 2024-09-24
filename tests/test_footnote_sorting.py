@@ -34,7 +34,7 @@ class TestDefaults(unittest.TestCase):
         args = {"adjacent": False}
         self.args = set_command_line_args(args)
         if self.args.adjacent:
-            self.text = fnsort.space_adjacent_footnotes(self.text)
+            self.text = fnsort.space_adjacent_references(self.text)
 
         # allow for full diff output
         # self.maxDiff = None
@@ -75,7 +75,7 @@ class TestDuplicates(unittest.TestCase):
         args = {"adjacent": False}
         self.args = set_command_line_args(args)
         if self.args.adjacent:
-            self.text = fnsort.space_adjacent_footnotes(self.text)
+            self.text = fnsort.space_adjacent_references(self.text)
 
         # allow for full diff output
         # self.maxDiff = None
@@ -120,7 +120,7 @@ class TestFootnotesMustBeLast(unittest.TestCase):
         args = {"adjacent": False}
         self.args = set_command_line_args(args)
         if self.args.adjacent:
-            self.text = fnsort.space_adjacent_footnotes(self.text)
+            self.text = fnsort.space_adjacent_references(self.text)
 
         # allow for full diff output
         # self.maxDiff = None
@@ -168,7 +168,7 @@ class TestAdjacentFootnotes(unittest.TestCase):
             spacing_text = fh.read()
 
         self.assertEqual(
-            fnsort.space_adjacent_footnotes(self.text),
+            fnsort.space_adjacent_references(self.text),
             spacing_text
         )
 
@@ -176,7 +176,7 @@ class TestAdjacentFootnotes(unittest.TestCase):
     def test_adjacent_footnote_sort(self):
         """ Entire footnote sort process with adjacent footnote references """
         if self.args.adjacent:
-            self.text = fnsort.space_adjacent_footnotes(self.text)
+            self.text = fnsort.space_adjacent_references(self.text)
 
         self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
 
