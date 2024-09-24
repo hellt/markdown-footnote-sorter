@@ -30,7 +30,7 @@ class TestDefaults(unittest.TestCase):
 
         # hedgehogs[^1]
         self.assertEqual(
-            fnsort.refrepl(match, order),
+            fnsort.replace_reference(match, order),
             "s[^1]"
         )
 
@@ -69,7 +69,7 @@ class TestDuplicates(unittest.TestCase):
         # multiple assertions
         for i, match in enumerate(matches):
             self.assertEqual(
-                fnsort.refrepl(match, order),
+                fnsort.replace_reference(match, order),
                 expected[i]
             )
 
