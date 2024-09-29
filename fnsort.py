@@ -121,7 +121,7 @@ def main():
         if args.adjacent:
             text = space_adjacent_references(text)
 
-        processed_text = sort_footnotes(text=text, options=args)
+        processed_text = sort_footnotes(text=text)
         file.seek(0)
         file.write(processed_text)
         file.truncate()
