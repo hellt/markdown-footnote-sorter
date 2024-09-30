@@ -5,12 +5,11 @@ on:
     # commented to avoid a potential triple run of the "test" job
     #  instead runs twice (pull_request and merge closed)
     # branches: ["main"]
-    tags:
-      - "v*"
+    tags: ["v*"]
   pull_request:
-    branches: [main]
+    branches: ["main"]
   pull_request_target:
-    types: [closed]
+    types: ["closed"]
 
 jobs:
   test:
