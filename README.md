@@ -27,8 +27,16 @@ Or download the script and put it in your `$PATH`:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py
+
+fnsort.py path/to/doc.md
 ```
 
+## Command Line Arguments
+### --adjacent
+Adjacent inline references that are not separated by other characters become problematic (by default).
+This option adds spacing between those inline references so they are properly identified during sorting.
+
+`fnsort.py path/to/doc.md --adjacent`
 
 ## Contributing
 For information about contributing to this project, see the [contributing guidelines](CONTRIBUTING.md).

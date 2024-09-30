@@ -1,6 +1,6 @@
 # Contributing
 
-🎉 Thank you for your interest in contributing to this project! 🎉
+:tada: Thank you for your interest in contributing to this project! :tada:
 
 A couple of quick items:
 
@@ -55,4 +55,4 @@ Choose one of the below testing commands methods that suits your needs.
 1. Discover unit tests in specific directory (in this case, `tests`) with verbosity
     * `python -m unittest discover -s tests -v`
 
-💡 For additional `unittest` command line options, refer to the [official Python unittest documentation](https://docs.python.org/3/library/unittest.html#command-line-interface).
+:bulb: For additional `unittest` command line options, refer to the [official Python unittest documentation](https://docs.python.org/3/library/unittest.html#command-line-interface).
