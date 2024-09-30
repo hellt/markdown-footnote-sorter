@@ -1,11 +1,16 @@
 name: Test, Build and Push Docker Image
 
-"on":
+on:
   push:
-    branches: ["main"]
+    # commented to avoid a potential triple run of the "test" job
+    #  instead runs twice (pull_request and merge closed)
+    # branches: ["main"]
     tags:
       - "v*"
   pull_request:
+    branches: [main]
+  pull_request_target:
+    types: [closed]
 
 jobs:
   test:
@@ -33,6 +38,7 @@ jobs:
       packages: write
     needs:
       - "test"
+    if: github.event.pull_request.merged == true
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
