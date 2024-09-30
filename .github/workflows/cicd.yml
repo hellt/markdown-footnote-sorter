@@ -1,15 +1,21 @@
-name: Test, Build and Push Docker Image
+name: Test, Build, and Push Docker Image
 
 on:
   push:
-    # commented to avoid a potential triple run of the "test" job
-    #  instead runs twice (pull_request and merge closed)
-    # branches: ["main"]
-    tags: ["v*"]
+    branches: ["main"]
+    tags:
+      - "v*"
   pull_request:
     branches: ["main"]
-  pull_request_target:
-    types: ["closed"]
+  release:
+    types: ["created"]
+
+# GOAL:
+#  - run test job on pushes to main branch or v* tag
+#  - run test job on PRs against main branch
+#  - run test job on Release creation
+#  - run docker job on the above events when the triggered actor is the repo owner
+#  - run docker job on Release creation (ex: maybe a maintainer that isn't repo owner)
 
 jobs:
   test:
@@ -37,7 +43,11 @@ jobs:
       packages: write
     needs:
       - "test"
-    if: github.event.pull_request.merged == true
+    if: >-
+      ${{
+      github.triggering_actor == github.repository_owner ||
+      github.event_name == 'release' && github.event.action == 'created'
+      }}
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
