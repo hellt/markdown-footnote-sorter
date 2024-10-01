@@ -174,5 +174,35 @@ class TestAdjacentFootnotes(unittest.TestCase):
         self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
 
 
+class TestMissingFootnotes(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        path = "tests/missing"
+
+        with open(f"{path}/missing.md") as fh:
+            self.text = fh.read()
+
+        # missing footnotes or inline refs throw exceptions so there's no
+        #   sense in "expected" test file
+
+        # technically there is also a "file" kwarg by default
+        args = {"adjacent": False}
+        self.args = set_command_line_args(args)
+
+        # allow for full diff output
+        # self.maxDiff = None
+
+
+    def test_missing_footnotes(self):
+        """
+        [negative test] Entire footnote sort process with missing footnotes and inline references
+        """
+        if self.args.adjacent:
+            self.text = fnsort.space_adjacent_references(self.text)
+
+        with self.assertRaises(fnsort.MissingFootnoteError):
+            fnsort.sort_footnotes(self.text)
+
+
 if __name__ == "__main__":
     unittest.main()
