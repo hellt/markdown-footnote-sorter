@@ -213,7 +213,7 @@ class TestMissingFootnotes(unittest.TestCase):
         #   sense in "expected" test file
 
         # technically there is also a "file" kwarg by default
-        args = {"adjacent": False}
+        args = {"adjacent": False, "keepnames": False}
         self.args = set_command_line_args(args)
 
         # allow for full diff output
@@ -228,7 +228,7 @@ class TestMissingFootnotes(unittest.TestCase):
             self.text = fnsort.space_adjacent_references(self.text)
 
         with self.assertRaises(fnsort.MissingFootnoteError):
-            fnsort.sort_footnotes(self.text)
+            fnsort.sort_footnotes(self.text, self.args)
 
 
 if __name__ == "__main__":
