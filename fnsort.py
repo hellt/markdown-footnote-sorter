@@ -39,6 +39,12 @@ def parse_arguments():
         help="Fix adjacent footnotes by adding a space between them",
     )
     
+    parser.add_argument(
+        "--keepnames",
+        action="store_true",
+        help="Keep footnote names and do not replace with numeric ones",
+    )
+
     return parser.parse_args()
 
 
@@ -85,7 +91,7 @@ def space_adjacent_references(text):
     return text
 
 
-def sort_footnotes(text):
+def sort_footnotes(text, args):
     # removes the last newline from EOF so there is no EOL on the last line
     text = text.rstrip()
 
@@ -105,20 +111,29 @@ def sort_footnotes(text):
     # Make a list of the footnote-references in order of appearance the original footnotes in text.
     # this is not the order of the footnote contents, but the order of the footnote references in the text.
     try:
-        newlabels = [f"[^{i+1}]: {labels[j]}" for (i, j) in enumerate(order)]
+        if args.keepnames:
+            # Retain ref/footnote names (don't replace with numeric ones)
+            newlabels = [f"[^{i}]: {labels[i]}" for i in order]
+        else:
+            # Make a list of the footnote-references in order of appearance in the original footnotes in text.
+            # This is not the order of the footnote contents, but the order of the footnote references in the text.
+            newlabels = [f"[^{i+1}]: {labels[j]}" for (i, j) in enumerate(order)]
     except KeyError as e:
         # add custom exception to improve error output
         raise MissingFootnoteError(
             f"Missing footnote or inline reference = {repr(e)}"
         )
+
     # print(f"newlabels: {newlabels}")
 
     # Remove the old footnote-references and put the new ones at the end of the text.
+    # https://docs.python.org/3/library/re.html#re.Pattern.sub
     text = label.sub("", text).strip() + "\n" * 2 + "\n".join(newlabels)
     # print(f"text: {text}")
 
-    # Rewrite the footnote-links with the new footnote-reference numbers.
-    text = link.sub(lambda m: replace_reference(m, order), text)
+    if not args.keepnames:
+        # Rewrite the footnote-links with the new footnote-reference numbers.
+        text = link.sub(lambda m: replace_reference(m, order), text)
 
     return text
 
@@ -131,7 +146,7 @@ def main():
         if args.adjacent:
             text = space_adjacent_references(text)
 
-        processed_text = sort_footnotes(text)
+        processed_text = sort_footnotes(text, args)
         file.seek(0)
         file.write(processed_text)
         file.truncate()
