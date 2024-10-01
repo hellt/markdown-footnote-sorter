@@ -38,5 +38,12 @@ This option adds spacing between those inline references so they are properly id
 
 `fnsort.py path/to/doc.md --adjacent`
 
+### --keepnames
+Retain or keep inline reference and footnote names.
+This prevents the default behavior of replacing the names with numbers.
+Footnotes at the end of the markdown are **still sorted**.
+
+`fnsort.py path/to/doc.md --keepnames`
+
 ## Contributing
 For information about contributing to this project, see the [contributing guidelines](CONTRIBUTING.md).
