@@ -19,6 +19,10 @@ import argparse
 import re
 
 
+class MissingFootnoteError(Exception):
+    pass
+
+
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Tidy Markdown footnotes")
     parser.add_argument(
@@ -100,7 +104,13 @@ def sort_footnotes(text):
 
     # Make a list of the footnote-references in order of appearance the original footnotes in text.
     # this is not the order of the footnote contents, but the order of the footnote references in the text.
-    newlabels = [f"[^{i+1}]: {labels[j]}" for (i, j) in enumerate(order)]
+    try:
+        newlabels = [f"[^{i+1}]: {labels[j]}" for (i, j) in enumerate(order)]
+    except KeyError as e:
+        # add custom exception to improve error output
+        raise MissingFootnoteError(
+            f"Missing footnote or inline reference = {repr(e)}"
+        )
     # print(f"newlabels: {newlabels}")
 
     # Remove the old footnote-references and put the new ones at the end of the text.
