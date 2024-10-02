@@ -24,7 +24,7 @@ class TestDefaults(unittest.TestCase):
             self.expected_text = fh.read()
 
         # technically there is also a "file" kwarg by default
-        args = {"adjacent": False}
+        args = {"adjacent": False, "keepnames": False}
         self.args = set_command_line_args(args)
         if self.args.adjacent:
             self.text = fnsort.space_adjacent_references(self.text)
@@ -50,7 +50,7 @@ class TestDefaults(unittest.TestCase):
 
     def test_footnote_sort(self):
         """ Entire footnote sort process """
-        self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
+        self.assertEqual(fnsort.sort_footnotes(self.text, self.args), self.expected_text)
 
 
 class TestDuplicates(unittest.TestCase):
@@ -65,7 +65,7 @@ class TestDuplicates(unittest.TestCase):
             self.expected_text = fh.read()
 
         # technically there is also a "file" kwarg by default
-        args = {"adjacent": False}
+        args = {"adjacent": False, "keepnames": False}
         self.args = set_command_line_args(args)
         if self.args.adjacent:
             self.text = fnsort.space_adjacent_references(self.text)
@@ -95,7 +95,7 @@ class TestDuplicates(unittest.TestCase):
 
     def test_footnote_sort_with_dups(self):
         """ Entire footnote sort process with duplicate tags """
-        self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
+        self.assertEqual(fnsort.sort_footnotes(self.text, self.args), self.expected_text)
 
 
 class TestFootnotesMustBeLast(unittest.TestCase):
@@ -110,7 +110,7 @@ class TestFootnotesMustBeLast(unittest.TestCase):
             self.expected_text = fh.read()
 
         # technically there is also a "file" kwarg by default
-        args = {"adjacent": False}
+        args = {"adjacent": False, "keepnames": False}
         self.args = set_command_line_args(args)
         if self.args.adjacent:
             self.text = fnsort.space_adjacent_references(self.text)
@@ -130,7 +130,7 @@ class TestFootnotesMustBeLast(unittest.TestCase):
 
         in short this is not expected to return the desired output
         """
-        self.assertNotEqual(fnsort.sort_footnotes(self.text), self.expected_text)
+        self.assertNotEqual(fnsort.sort_footnotes(self.text, self.args), self.expected_text)
 
 
 class TestAdjacentFootnotes(unittest.TestCase):
@@ -148,7 +148,7 @@ class TestAdjacentFootnotes(unittest.TestCase):
             self.expected_text = fh.read()
 
         # technically there is also a "file" kwarg by default
-        args = {"adjacent": True}
+        args = {"adjacent": True, "keepnames": False}
         self.args = set_command_line_args(args)
 
         # allow for full diff output
@@ -171,7 +171,34 @@ class TestAdjacentFootnotes(unittest.TestCase):
         if self.args.adjacent:
             self.text = fnsort.space_adjacent_references(self.text)
 
-        self.assertEqual(fnsort.sort_footnotes(self.text), self.expected_text)
+        self.assertEqual(fnsort.sort_footnotes(self.text, self.args), self.expected_text)
+
+
+class TestKeepFootnoteNames(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        path = "tests/keep_fn_names"
+
+        with open(f"{path}/keep_fn_names.md") as fh:
+            self.text = fh.read()
+
+        with open(f"{path}/keep_fn_names_expected.md") as fh:
+            self.expected_text = fh.read()
+
+        # technically there is also a "file" kwarg by default
+        args = {"adjacent": False, "keepnames": True}
+        self.args = set_command_line_args(args)
+
+        # allow for full diff output
+        # self.maxDiff = None
+
+
+    def test_keep_footnote_names(self):
+        """ Entire footnote sort process while retaining footnote names """
+        if self.args.adjacent:
+            self.text = fnsort.space_adjacent_references(self.text)
+
+        self.assertEqual(fnsort.sort_footnotes(self.text, self.args), self.expected_text)
 
 
 class TestMissingFootnotes(unittest.TestCase):
@@ -186,7 +213,7 @@ class TestMissingFootnotes(unittest.TestCase):
         #   sense in "expected" test file
 
         # technically there is also a "file" kwarg by default
-        args = {"adjacent": False}
+        args = {"adjacent": False, "keepnames": False}
         self.args = set_command_line_args(args)
 
         # allow for full diff output
@@ -201,7 +228,7 @@ class TestMissingFootnotes(unittest.TestCase):
             self.text = fnsort.space_adjacent_references(self.text)
 
         with self.assertRaises(fnsort.MissingFootnoteError):
-            fnsort.sort_footnotes(self.text)
+            fnsort.sort_footnotes(self.text, self.args)
 
 
 if __name__ == "__main__":
