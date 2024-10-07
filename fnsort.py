@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 """
 Read a Markdown file passed as a first argument and sort footnotes.

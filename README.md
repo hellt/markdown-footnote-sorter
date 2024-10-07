@@ -28,7 +28,8 @@ https://github.com/user-attachments/assets/2ccb1782-1d85-499c-ba09-3be94c34a591
 1. Or download the script and put it in your `$PATH`:
 
     ```bash
-    curl -sL https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py
+    curl -sL https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py \
+      > ~/.local/bin/fnsort.py
 
     fnsort.py path/to/doc.md
     ```
@@ -37,6 +38,10 @@ https://github.com/user-attachments/assets/2ccb1782-1d85-499c-ba09-3be94c34a591
    * From this project's main page, click **Code**, then **Codespace**.
    * Choose **Create codespace on <branch_name>** to [create a codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository) with the default resources (currently 2 CPU, 8 GB RAM, 32 GB Storage).
    <img alt="create codespace button" title="create codespace button" src="https://docs.github.com/assets/cb-49943/mw-1440/images/help/codespaces/who-will-pay.webp" width="275px"/>
+
+   ```bash
+   /app/fnsort.py path/to/doc.md
+   ```
 
 > [!IMPORTANT]
 > Keep in mind there are [monthly limits measured in core hours](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts) and to [stop your codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/stopping-and-starting-a-codespace):stop_sign: when you're not using it to conserve your monthly core hours allowance.
