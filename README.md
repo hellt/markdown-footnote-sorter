@@ -9,6 +9,8 @@ of the file.
 
 Based on <https://github.com/derdennis/sort-markdown-footnotes>
 
+Inspired by <http://www.leancrew.com/all-this/2012/09/tidying-markdown-reference-links/>
+
 
 
 https://github.com/user-attachments/assets/2ccb1782-1d85-499c-ba09-3be94c34a591
@@ -17,19 +19,27 @@ https://github.com/user-attachments/assets/2ccb1782-1d85-499c-ba09-3be94c34a591
 
 ## How to use?
 
-You can use the container image provided:
+1. You can use the container image provided:
 
-```bash
-docker run --rm -v $(pwd):/work ghcr.io/hellt/markdown-footnote-sorter path/to/doc.md
-```
+    ```bash
+    docker run --rm -v $(pwd):/work ghcr.io/hellt/markdown-footnote-sorter path/to/doc.md
+    ```
 
-Or download the script and put it in your `$PATH`:
+1. Or download the script and put it in your `$PATH`:
 
-```bash
-curl -sL https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py
+    ```bash
+    curl -sL https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py
 
-fnsort.py path/to/doc.md
-```
+    fnsort.py path/to/doc.md
+    ```
+
+1. Or run the container in a [Codespace](https://docs.github.com/en/codespaces/overview):sparkles: via the GitHub UI:
+   * From this project's main page, click **Code**, then **Codespace**.
+   * Choose **Create codespace on <branch_name>** to [create a codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository) with the default resources (currently 2 CPU, 8 GB RAM, 32 GB Storage).
+   <img alt="create codespace button" title="create codespace button" src="https://docs.github.com/assets/cb-49943/mw-1440/images/help/codespaces/who-will-pay.webp" width="275px"/>
+
+> [!IMPORTANT]
+> Keep in mind there are [monthly limits measured in core hours](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts) and to [stop your codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/stopping-and-starting-a-codespace):stop_sign: when you're not using it to conserve your monthly core hours allowance.
 
 ## Command Line Arguments
 ### --adjacent
