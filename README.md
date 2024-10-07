@@ -28,7 +28,9 @@ https://github.com/user-attachments/assets/2ccb1782-1d85-499c-ba09-3be94c34a591
 1. Or download the script and put it in your `$PATH`:
 
     ```bash
-    curl -sL https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py
+    curl -sL https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py > fnsort.py
+
+    chmod u+x fnsort.py
 
     fnsort.py path/to/doc.md
     ```
