@@ -27,10 +27,16 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Run Ruff linting and formatting
+      - name: Run Ruff linter
         uses: astral-sh/ruff-action@v1
         with:
           args: "check"
+          changed-files: "true"
+
+      - name: Run Ruff formatter
+        uses: astral-sh/ruff-action@v1
+        with:
+          args: "format --check"
           changed-files: "true"
 
   test:
