@@ -5,7 +5,7 @@ import fnsort
 
 
 def set_command_line_args(args):
-    """ Set (what would otherwise be) command-line arguments """
+    """Set (what would otherwise be) command-line arguments"""
     return argparse.Namespace(**args)
 
 
@@ -32,25 +32,22 @@ class TestDefaults(unittest.TestCase):
         # allow for full diff output
         # self.maxDiff = None
 
-
     def test_replace_reference(self):
-        """ Inline reference replacement """
+        """Inline reference replacement"""
         # use the link regex from the fnsort import
-           
+
         # "search" function only returns the first match
         match = fnsort.link.search(self.text)
         order = ["1", "3", "4", "2"]
 
         # hedgehogs[^1]
-        self.assertEqual(
-            fnsort.replace_reference(match, order),
-            "s[^1]"
-        )
-
+        self.assertEqual(fnsort.replace_reference(match, order), "s[^1]")
 
     def test_footnote_sort(self):
-        """ Entire footnote sort process """
-        self.assertEqual(fnsort.sort_footnotes(self.text, self.args), self.expected_text)
+        """Entire footnote sort process"""
+        self.assertEqual(
+            fnsort.sort_footnotes(self.text, self.args), self.expected_text
+        )
 
 
 class TestDuplicates(unittest.TestCase):
@@ -73,29 +70,24 @@ class TestDuplicates(unittest.TestCase):
         # allow for full diff output
         # self.maxDiff = None
 
-
     def test_replace_references_with_dups(self):
-        """ Multiple reference replacements with duplicate tags """
+        """Multiple reference replacements with duplicate tags"""
         # find all matches
         matches = fnsort.link.finditer(self.text)
         order = ["1", "3", "2", "5", "4"]
 
         # should be seven regex matches in duplicates.md
-        expected = [
-            "s[^1]", "s[^2]", " [^1]", "s[^3]", "s[^4]", "s[^5]", " [^2]"
-        ]
+        expected = ["s[^1]", "s[^2]", " [^1]", "s[^3]", "s[^4]", "s[^5]", " [^2]"]
 
         # multiple assertions
         for i, match in enumerate(matches):
-            self.assertEqual(
-                fnsort.replace_reference(match, order),
-                expected[i]
-            )
-
+            self.assertEqual(fnsort.replace_reference(match, order), expected[i])
 
     def test_footnote_sort_with_dups(self):
-        """ Entire footnote sort process with duplicate tags """
-        self.assertEqual(fnsort.sort_footnotes(self.text, self.args), self.expected_text)
+        """Entire footnote sort process with duplicate tags"""
+        self.assertEqual(
+            fnsort.sort_footnotes(self.text, self.args), self.expected_text
+        )
 
 
 class TestFootnotesMustBeLast(unittest.TestCase):
@@ -118,9 +110,8 @@ class TestFootnotesMustBeLast(unittest.TestCase):
         # allow for full diff output
         # self.maxDiff = None
 
-
     def test_footnote_sort_trailing_text(self):
-        """ [negative test] Entire footnote sort process with text after the footnotes """
+        """[negative test] Entire footnote sort process with text after the footnotes"""
 
         """
         negative test
@@ -130,7 +121,9 @@ class TestFootnotesMustBeLast(unittest.TestCase):
 
         in short this is not expected to return the desired output
         """
-        self.assertNotEqual(fnsort.sort_footnotes(self.text, self.args), self.expected_text)
+        self.assertNotEqual(
+            fnsort.sort_footnotes(self.text, self.args), self.expected_text
+        )
 
 
 class TestAdjacentFootnotes(unittest.TestCase):
@@ -154,24 +147,21 @@ class TestAdjacentFootnotes(unittest.TestCase):
         # allow for full diff output
         # self.maxDiff = None
 
-
     def test_adjacent_inline_reference_spacing(self):
-        """ Test spacing out adjacent inline references """
+        """Test spacing out adjacent inline references"""
         with open(f"tests/adjacent/adjacent_spacing.md") as fh:
             spacing_text = fh.read()
 
-        self.assertEqual(
-            fnsort.space_adjacent_references(self.text),
-            spacing_text
-        )
-
+        self.assertEqual(fnsort.space_adjacent_references(self.text), spacing_text)
 
     def test_adjacent_footnote_sort(self):
-        """ Entire footnote sort process with adjacent footnote references """
+        """Entire footnote sort process with adjacent footnote references"""
         if self.args.adjacent:
             self.text = fnsort.space_adjacent_references(self.text)
 
-        self.assertEqual(fnsort.sort_footnotes(self.text, self.args), self.expected_text)
+        self.assertEqual(
+            fnsort.sort_footnotes(self.text, self.args), self.expected_text
+        )
 
 
 class TestKeepFootnoteNames(unittest.TestCase):
@@ -192,13 +182,14 @@ class TestKeepFootnoteNames(unittest.TestCase):
         # allow for full diff output
         # self.maxDiff = None
 
-
     def test_keep_footnote_names(self):
-        """ Entire footnote sort process while retaining footnote names """
+        """Entire footnote sort process while retaining footnote names"""
         if self.args.adjacent:
             self.text = fnsort.space_adjacent_references(self.text)
 
-        self.assertEqual(fnsort.sort_footnotes(self.text, self.args), self.expected_text)
+        self.assertEqual(
+            fnsort.sort_footnotes(self.text, self.args), self.expected_text
+        )
 
 
 class TestMissingFootnotes(unittest.TestCase):
@@ -218,7 +209,6 @@ class TestMissingFootnotes(unittest.TestCase):
 
         # allow for full diff output
         # self.maxDiff = None
-
 
     def test_missing_footnotes(self):
         """
