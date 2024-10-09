@@ -77,11 +77,21 @@ class TestDuplicates(unittest.TestCase):
         order = ["1", "3", "2", "5", "4"]
 
         # should be seven regex matches in duplicates.md
-        expected = ["s[^1]", "s[^2]", " [^1]", "s[^3]", "s[^4]", "s[^5]", " [^2]"]
+        expected = [
+            "s[^1]",
+            "s[^2]",
+            " [^1]",
+            "s[^3]",
+            "s[^4]",
+            "s[^5]",
+            " [^2]",
+        ]
 
         # multiple assertions
         for i, match in enumerate(matches):
-            self.assertEqual(fnsort.replace_reference(match, order), expected[i])
+            self.assertEqual(
+                fnsort.replace_reference(match, order), expected[i]
+            )
 
     def test_footnote_sort_with_dups(self):
         """Entire footnote sort process with duplicate tags"""
@@ -152,7 +162,9 @@ class TestAdjacentFootnotes(unittest.TestCase):
         with open("tests/adjacent/adjacent_spacing.md") as fh:
             spacing_text = fh.read()
 
-        self.assertEqual(fnsort.space_adjacent_references(self.text), spacing_text)
+        self.assertEqual(
+            fnsort.space_adjacent_references(self.text), spacing_text
+        )
 
     def test_adjacent_footnote_sort(self):
         """Entire footnote sort process with adjacent footnote references"""
