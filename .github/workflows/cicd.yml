@@ -11,8 +11,8 @@ on:
     types: ["created"]
 
 # GOAL:
-#  - run ruff linter/formatter job on pushes to main branch or v* tag
-#  - run ruff linter/formatter job on PRs against main branch
+#  - run ruff job on pushes to main branch or v* tag
+#  - run ruff job on PRs against main branch
 #  - run ruff job on Release creation
 #  - run test job on pushes to main branch or v* tag
 #  - run test job on PRs against main branch
