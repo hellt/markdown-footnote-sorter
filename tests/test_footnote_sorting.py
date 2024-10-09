@@ -149,7 +149,7 @@ class TestAdjacentFootnotes(unittest.TestCase):
 
     def test_adjacent_inline_reference_spacing(self):
         """Test spacing out adjacent inline references"""
-        with open(f"tests/adjacent/adjacent_spacing.md") as fh:
+        with open("tests/adjacent/adjacent_spacing.md") as fh:
             spacing_text = fh.read()
 
         self.assertEqual(fnsort.space_adjacent_references(self.text), spacing_text)
