@@ -36,7 +36,7 @@ jobs:
       - name: Run Ruff formatter
         uses: astral-sh/ruff-action@v1
         with:
-          args: "format --check"
+          args: "format --check --diff"
           changed-files: "true"
 
   test:
