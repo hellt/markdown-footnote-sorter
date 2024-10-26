@@ -38,7 +38,7 @@ def parse_arguments():
         action="store_true",
         help="Fix adjacent footnotes by adding a space between them",
     )
-    
+
     parser.add_argument(
         "--keepnames",
         action="store_true",
@@ -86,8 +86,10 @@ def space_adjacent_references(text):
 
         # slice the string to separate preceding character from inline reference
         #   ex: s[^4]
-        text = re.sub(note_re, f"{repl[0]} {repl[1:]}", text, flags=re.MULTILINE)
-    
+        text = re.sub(
+            note_re, f"{repl[0]} {repl[1:]}", text, flags=re.MULTILINE
+        )
+
     return text
 
 
@@ -117,7 +119,9 @@ def sort_footnotes(text, args):
         else:
             # Make a list of the footnote-references in order of appearance in the original footnotes in text.
             # This is not the order of the footnote contents, but the order of the footnote references in the text.
-            newlabels = [f"[^{i+1}]: {labels[j]}" for (i, j) in enumerate(order)]
+            newlabels = [
+                f"[^{i+1}]: {labels[j]}" for (i, j) in enumerate(order)
+            ]
     except KeyError as e:
         # add custom exception to improve error output
         raise MissingFootnoteError(
