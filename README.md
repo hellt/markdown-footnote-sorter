@@ -31,15 +31,15 @@ Inspired by <http://www.leancrew.com/all-this/2012/09/tidying-markdown-reference
     fnsort.py path/to/doc.md
     ```
 
-1. Or run the container in a [Codespace](https://docs.github.com/en/codespaces/overview):sparkles: via the GitHub UI:
+1. Or from the GitHub UI, run the container in a :sparkles:[Codespace](https://docs.github.com/en/codespaces/overview):
 
    * From this project's main page, click **Code**, then **Codespace**.
-   * Choose **Create codespace on <branch_name>**
+   * Choose **Create codespace on &lt;branch_name&gt;**
 
-This [creates a codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository)
-with the default resources (currently 2 CPU, 8 GB RAM, 32 GB Storage).
+   This [creates a codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository)
+   with the default resources (currently 2 CPU, 8 GB RAM, 32 GB Storage).
 
-<img alt="create codespace button" title="create codespace button" src="https://docs.github.com/assets/cb-49943/mw-1440/images/help/codespaces/who-will-pay.webp" width="275px"/>
+   <img alt="create codespace button" title="create codespace button" src="https://docs.github.com/assets/cb-49943/mw-1440/images/help/codespaces/who-will-pay.webp" width="275px"/>
 
    * :rocket: Run fnsort on your markdown file:
 
