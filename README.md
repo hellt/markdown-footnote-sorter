@@ -41,6 +41,8 @@ with the default resources (currently 2 CPU, 8 GB RAM, 32 GB Storage).
 
 <img alt="create codespace button" title="create codespace button" src="https://docs.github.com/assets/cb-49943/mw-1440/images/help/codespaces/who-will-pay.webp" width="275px"/>
 
+   * :rocket: Run fnsort on your markdown file:
+
    ```bash
    /app/fnsort.py path/to/doc.md
    ```
