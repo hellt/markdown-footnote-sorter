@@ -24,7 +24,8 @@ Inspired by <http://www.leancrew.com/all-this/2012/09/tidying-markdown-reference
 1. Or download the script and put it in your `$PATH`:
 
     ```bash
-    curl -sL https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py \
+    curl -sL \
+    https://raw.githubusercontent.com/hellt/markdown-footnote-sorter/main/fnsort.py\
       > ~/.local/bin/fnsort.py
 
     fnsort.py path/to/doc.md
