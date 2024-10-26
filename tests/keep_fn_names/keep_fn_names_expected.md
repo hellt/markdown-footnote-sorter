@@ -1,9 +1,11 @@
 # Brown Bears
 
 Brown bears [^brn_bear] are majestic mammals best seen at a distance!
-There are several sub-species [^brn_bear] across Asia, Europe, and North America. Unfortunately mankind has endangered or pushed some species to extinction due to fur trade or human encroachment.
+There are several sub-species [^brn_bear] across Asia, Europe, and North
+America. Unfortunately mankind has endangered or pushed some species to
+extinction due to fur trade or human encroachment.
 
-![Grizzly Bear Sow and her cubs](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Grizzly_Bear-_Sow_and_cubs_%285728173840%29.jpg/320px-Grizzly_Bear-_Sow_and_cubs_%285728173840%29.jpg "Grizzly Bear Sow and her cubs")
+![Grizzly Bear Sow and her cubs](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Grizzly_Bear-_Sow_and_cubs_%285728173840%29.jpg/320px-Grizzly_Bear-_Sow_and_cubs_%285728173840%29.jpg)
 
 ## Eurasian Brown Bear
 

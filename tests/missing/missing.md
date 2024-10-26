@@ -20,5 +20,7 @@ credit[^cr] where it's due, Thank you Mozilla
 [^oops]: ooops, did I add a footnote that doesn't exist in the inline text?
 [^pa]: applies partial modifications to a resource
 [^po]: sends data to the server
-[^pu]: creates a new resource or replaces a representation of the target resource with the request content
-[^h]: requests the metadata of a resource in the form of headers that the server would have sent if GET was used instead
+[^pu]: creates a new resource or replaces a representation of the target
+resource with the request content
+[^h]: requests the metadata of a resource in the form of headers that the
+server would have sent if GET was used instead
