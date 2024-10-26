@@ -139,7 +139,8 @@ def sort_footnotes(text, args):
         # Rewrite the footnote-links with the new footnote-reference numbers.
         text = link.sub(lambda m: replace_reference(m, order), text)
 
-    return text
+    # Append newline to EOL to appease markdownlint
+    return f'{text}\n'
 
 
 def main():
