@@ -1,4 +1,5 @@
 # Footnotes must be last
+
 Footnotes must be last otherwise the other content will be lost.
 
 Red deer[^1] are interesting as well.

@@ -8,6 +8,7 @@ There are several sub-species [^brn_bear] across Asia, Europe, and North America
 ## Eurasian Brown Bear
 
 ### Asia
+
 * East Siberian brown bear [^e_sib]
 * Gobi bear [^gobi]
 * Himalayan brown bear [^hima]
@@ -17,12 +18,14 @@ There are several sub-species [^brn_bear] across Asia, Europe, and North America
 * Ussuri brown bear [^ussuri]
 
 ### Europe
+
 * Cantabrian brown bear [^cant_bear]
 * Marsican brown bear [^mars_bear] - critically endangered
 
 ## Grizzly Bear
 
 ### North America
+
 * Californian grizzly bear[^cali] - extinct
 * Dall Island brown bear[^dall]
 * Kodiak bear [^kodiak]
