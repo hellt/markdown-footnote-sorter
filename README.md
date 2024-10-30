@@ -2,7 +2,7 @@
 
 A script to sort footnotes in a markdown file.
 
-Reads a Markdown file passed as a first argument and sorts footnotes.
+Reads a Markdown file passed as the first argument and sorts footnotes.
 The reference links will be numbered in
 the order they appear in the text and placed at the bottom
 of the file.
