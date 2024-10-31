@@ -37,10 +37,10 @@ fish and tadpoles [^6] .
 
 The most common call of the Eurasian is a sharp repeated "tic-tic-tic" [^5].
 
-[^4]: https://en.wikipedia.org/wiki/Wren
-[^7]: https://www.allaboutbirds.org/guide/browse/shape/Wrens
-[^1]: https://en.wikipedia.org/wiki/Wren#Description
-[^5]: https://en.wikipedia.org/wiki/Eurasian_wren#Vocalizations
-[^2]: https://en.wikipedia.org/wiki/Wren#Distribution_and_habitat
-[^6]: https://en.wikipedia.org/wiki/Wren#Behavior_and_ecology
-[^3]: https://en.wikipedia.org/wiki/File:Ein_neugieriger_Zaunk%C3%B6nig.jpg
+[^4]: <https://en.wikipedia.org/wiki/Wren>
+[^7]: <https://www.allaboutbirds.org/guide/browse/shape/Wrens>
+[^1]: <https://en.wikipedia.org/wiki/Wren#Description>
+[^5]: <https://en.wikipedia.org/wiki/Eurasian_wren#Vocalizations>
+[^2]: <https://en.wikipedia.org/wiki/Wren#Distribution_and_habitat>
+[^6]: <https://en.wikipedia.org/wiki/Wren#Behavior_and_ecology>
+[^3]: <https://en.wikipedia.org/wiki/File:Ein_neugieriger_Zaunk%C3%B6nig.jpg>

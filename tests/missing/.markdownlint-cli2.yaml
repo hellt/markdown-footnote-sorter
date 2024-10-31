@@ -1,0 +1,8 @@
+---
+default: true
+
+config:
+  # missing.md intentionally has an unused footnote
+  # MD053
+  link-image-reference-definitions: false
+...

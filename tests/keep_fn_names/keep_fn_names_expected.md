@@ -37,21 +37,21 @@ extinction due to fur trade or human encroachment.
 * Stickeen brown bear[^stick]
 * Ungava brown bear[^ungava] - extinct
 
-[^brn_bear]: https://en.wikipedia.org/wiki/Brown_bear
-[^e_sib]: https://en.wikipedia.org/wiki/East_Siberian_brown_bear
-[^gobi]: https://en.wikipedia.org/wiki/Gobi_bear
-[^hima]: https://en.wikipedia.org/wiki/Himalayan_brown_bear
-[^kamch]: https://en.wikipedia.org/wiki/Kamchatka_brown_bear
-[^syr]: https://en.wikipedia.org/wiki/Syrian_brown_bear
-[^tib]: https://en.wikipedia.org/wiki/Tibetan_blue_bear
-[^ussuri]: https://en.wikipedia.org/wiki/Ussuri_brown_bear
-[^cant_bear]: https://en.wikipedia.org/wiki/Cantabrian_brown_bear
-[^mars_bear]: https://en.wikipedia.org/wiki/Marsican_brown_bear
-[^cali]: https://en.wikipedia.org/wiki/California_grizzly_bear
-[^dall]: https://en.wikipedia.org/wiki/Dall_Island
-[^kodiak]: https://en.wikipedia.org/wiki/Kodiak_bear
-[^mex]: https://en.wikipedia.org/wiki/Mexican_grizzly_bear
-[^pgb]: https://en.wikipedia.org/wiki/Alaska_Peninsula_brown_bear
-[^sitka]: https://en.wikipedia.org/wiki/ABC_Islands_bear
-[^stick]: https://en.wikipedia.org/wiki/Stickeen_brown_bear
-[^ungava]: https://en.wikipedia.org/wiki/Ungava_brown_bear
+[^brn_bear]: <https://en.wikipedia.org/wiki/Brown_bear>
+[^e_sib]: <https://en.wikipedia.org/wiki/East_Siberian_brown_bear>
+[^gobi]: <https://en.wikipedia.org/wiki/Gobi_bear>
+[^hima]: <https://en.wikipedia.org/wiki/Himalayan_brown_bear>
+[^kamch]: <https://en.wikipedia.org/wiki/Kamchatka_brown_bear>
+[^syr]: <https://en.wikipedia.org/wiki/Syrian_brown_bear>
+[^tib]: <https://en.wikipedia.org/wiki/Tibetan_blue_bear>
+[^ussuri]: <https://en.wikipedia.org/wiki/Ussuri_brown_bear>
+[^cant_bear]: <https://en.wikipedia.org/wiki/Cantabrian_brown_bear>
+[^mars_bear]: <https://en.wikipedia.org/wiki/Marsican_brown_bear>
+[^cali]: <https://en.wikipedia.org/wiki/California_grizzly_bear>
+[^dall]: <https://en.wikipedia.org/wiki/Dall_Island>
+[^kodiak]: <https://en.wikipedia.org/wiki/Kodiak_bear>
+[^mex]: <https://en.wikipedia.org/wiki/Mexican_grizzly_bear>
+[^pgb]: <https://en.wikipedia.org/wiki/Alaska_Peninsula_brown_bear>
+[^sitka]: <https://en.wikipedia.org/wiki/ABC_Islands_bear>
+[^stick]: <https://en.wikipedia.org/wiki/Stickeen_brown_bear>
+[^ungava]: <https://en.wikipedia.org/wiki/Ungava_brown_bear>

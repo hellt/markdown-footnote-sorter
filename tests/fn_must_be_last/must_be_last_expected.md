@@ -14,9 +14,9 @@ The size [^4] of the red deer stags can rival that of North America elk if an
 ample food supply is present. Red deer are the fourth largest[^5] extant deer
 species behind moose, elk, and sambar deer.
 
-[^1]: https://en.wikipedia.org/wiki/Red_deer
-[^2]: https://en.wikipedia.org/wiki/Northern_Africa
-[^3]: https://en.wikipedia.org/wiki/Oostvaardersplassen
-[^4]: https://en.wikipedia.org/wiki/Red_deer#Description
-[^5]: https://en.wikipedia.org/wiki/Red_deer#Size
+[^1]: <https://en.wikipedia.org/wiki/Red_deer>
+[^2]: <https://en.wikipedia.org/wiki/Northern_Africa>
+[^3]: <https://en.wikipedia.org/wiki/Oostvaardersplassen>
+[^4]: <https://en.wikipedia.org/wiki/Red_deer#Description>
+[^5]: <https://en.wikipedia.org/wiki/Red_deer#Size>
 <!--- I tried to stash a comment at the bottom, but it will be shuffled around --->
