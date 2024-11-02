@@ -140,7 +140,7 @@ def sort_footnotes(text, args):
         text = link.sub(lambda m: replace_reference(m, order), text)
 
     # Append newline to EOL to appease markdownlint
-    return f'{text}\n'
+    return f"{text}\n"
 
 
 def main():
