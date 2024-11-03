@@ -39,6 +39,17 @@ jobs:
           args: "format --check --diff"
           changed-files: "true"
 
+  mdlint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+    
+    - name: Run markdownlint-cli2
+      uses: DavidAnson/markdownlint-cli2-action@v17
+      with:
+        globs: '*.md */*.md'
+
   test:
     runs-on: ubuntu-latest
     needs:
