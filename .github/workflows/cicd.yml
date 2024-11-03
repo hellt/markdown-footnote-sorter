@@ -13,11 +13,11 @@ on:  # yamllint disable-line rule:truthy
 
 # GOAL:
 #  on pushes to main branch or v* tag
-#    - ruff, mdlint, test
+#    - ruff, mdlint, yamllint, test
 #  on PRs against main branch
-#    - ruff, mdlint, test
+#    - ruff, mdlint, yamllint, test
 #  on Release creation
-#    - ruff, mdlint, test
+#    - ruff, mdlint, yamllint, test
 #  on the above events when the triggered actor is the repo owner
 #    - docker
 #  on Release creation (ex: maybe a maintainer that isn't repo owner)
