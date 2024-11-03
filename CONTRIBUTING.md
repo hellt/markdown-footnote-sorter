@@ -77,7 +77,7 @@ This project uses GNU `make` to simplify the action of interacting with several
 linters and performing unit testing.
 Project dependencies and Python virtual environment are managed with `uv`.
 
-## Prequisites:
+## Prequisites
 
 * [Install `uv` for package management](https://docs.astral.sh/uv/#getting-started)
 * Install GNU [`make`](https://www.gnu.org/software/make/) for your operating
