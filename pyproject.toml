@@ -1,3 +1,16 @@
+[project]
+name = "markdown-footnote-sorter"
+version = "0.2.0"
+description = "A script to sort footnotes in a markdown file"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+    "ruff>=0.7.2",
+    "yamllint>=1.32.0",
+]
+
 [tool.ruff]
-# Set the maximum line length to 79.
+# Set the maximum line length to 79
 line-length = 79
+
+[tool.uv]
