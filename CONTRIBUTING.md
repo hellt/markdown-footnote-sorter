@@ -33,6 +33,8 @@ For minimal dependencies, the "batteries included" [Python `unittest` framework]
 is utilized. (Other testing frameworks could be considered should additional
 testing features be needed.)
 
+Testing can be invoked via [`make test` (more information below)](#run-python-unit-tests)
+
 ## Development Process
 
 >
@@ -48,8 +50,11 @@ code regression.
 
 1. From the `main` branch of your fork, [create a feature branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository)
 
-1. Validate [test cases run successfully](#running-unit-tests) before any
+1. Validate [test cases run successfully](#run-python-unit-tests) before any
   changes are made
+
+1. Verify [linting and formatting checks run successfully](#run-all-linters-in-one-shot)
+  before making any changes
 
 1. Make modifications
 
@@ -59,12 +64,82 @@ code regression.
 
 1. Re-run the unit tests to confirm they run successfully
 
+1. Re-run linting and formatting checks
+
+1. Fix up any linting or formatting errors
+
 1. When you are satisfied with the changes and it is ready for review,
   [submit a Pull Request (PR)](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
-## Running Unit Tests
+## Using `make` to streamline linting and testing
 
-Choose one of the below testing commands methods that suits your needs.
+This project uses GNU `make` to simplify the action of interacting with several
+linters and performing unit testing.
+Project dependencies and Python virtual environment are managed with `uv`.
+
+## Prequisites:
+
+* [Install `uv` for package management](https://docs.astral.sh/uv/#getting-started)
+* Install GNU [`make`](https://www.gnu.org/software/make/) for your operating
+  system
+
+## General
+
+### Default (all)
+
+* initialize, lint, and test
+
+```bash
+make all
+
+# or simply
+make
+```
+
+### Clean
+
+* Remove caches created by Python, ruff, and npm
+
+`make clean`
+
+### Initialize
+
+* Create a Python virtual environment for ruff and yamlllint
+* Install Node.js markdownlint-cli2 package
+
+`make init`
+
+## Linting
+
+### Run all linters in one shot
+
+`make lint`
+
+### Run markdownlint-cli2 for Markdown linting
+
+`make mdlint`
+
+### Run ruff for Python linting
+
+`make ruff`
+
+### Run yamllint for Markdown linting
+
+`make yamllint`
+
+## Testing
+
+### Run Python unit tests
+
+`make test`
+
+## Running Unit Tests Manually
+
+> [!NOTE]
+> This information is somewhat historical since incorporating the Makefile,
+> but could prove useful.
+
+Choose one of the below testing command options that suits your needs.
 
 > [!IMPORTANT]
 > The commands below are to be run from the top level of the project.
