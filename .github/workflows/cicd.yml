@@ -49,8 +49,7 @@ jobs:
     
     - name: Run markdownlint-cli2
       uses: DavidAnson/markdownlint-cli2-action@v17
-      with:
-        globs: '*.md tests/*/*.md'
+      # file globbing configured in .markdownlint-cli2.yaml
 
   test:
     runs-on: ubuntu-latest

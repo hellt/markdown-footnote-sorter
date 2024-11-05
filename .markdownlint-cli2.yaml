@@ -2,4 +2,8 @@
 default: true
 
 config:
+
+globs:
+  - '*.{md,markdown}'
+  - 'tests/*/*.{md,markdown}'
 ...
