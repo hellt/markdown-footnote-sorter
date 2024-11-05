@@ -163,6 +163,3 @@ cython_debug/
 
 # vim
 *.swp
-
-# Node.js
-node_modules/
