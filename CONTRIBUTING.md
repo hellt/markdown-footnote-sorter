@@ -35,9 +35,19 @@ testing features be needed.)
 
 Testing can be invoked via [`make test` (more information below)](#run-python-unit-tests)
 
+## Development Requirements
+
+* Python 3
+* GNU Make
+* Docker (Engine)
+
+> [!IMPORTANT]
+> If your development workstation has a security access control (ex: SELinux)
+> enabled, you will need to put it in a permissive mode for the Docker bind
+> mounts to function.
+
 ## Development Process
 
->
 > This section consists of suggestions.
 
 It is recommended to verify tests are successful before making any code changes.
@@ -79,15 +89,15 @@ Project dependencies and Python virtual environment are managed with `uv`.
 
 ## Prequisites
 
-* [Install `uv` for package management](https://docs.astral.sh/uv/#getting-started)
 * Install GNU [`make`](https://www.gnu.org/software/make/) for your operating
   system
+* Install Docker (Engine)
 
 ## General
 
 ### Default (all)
 
-* initialize, lint, and test
+* lint and test
 
 ```bash
 make all
@@ -98,16 +108,9 @@ make
 
 ### Clean
 
-* Remove caches created by Python, ruff, and npm
+* Removes the Docker images this Makefile utilizes
 
 `make clean`
-
-### Initialize
-
-* Create a Python virtual environment for ruff and yamlllint
-* Install Node.js markdownlint-cli2 package
-
-`make init`
 
 ## Linting
 
@@ -132,6 +135,29 @@ make
 ### Run Python unit tests
 
 `make test`
+
+## But I want to run linting locally
+
+> [!NOTE]
+> This project uses Docker images to avoid shipping or depending on other
+> projects, package managers, or languages (Node.js, Ruby).
+>
+> Non-Dockerized local testing is not supported by the repo owner.
+>
+> There are extra `make` targets in the Makefile in case you'd prefer local
+> linting and formatting.
+
+* Install GNU Make (same requirement as the main development pattern)
+* [Install `uv` for Python package management](https://docs.astral.sh/uv/#getting-started)
+* Install `npm` for Node.js package management
+
+```bash
+make localclean
+make localinit
+make localmdl
+make localruff
+make localyaml
+```
 
 ## Running Unit Tests Manually
 
