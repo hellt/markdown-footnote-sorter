@@ -1,6 +1,7 @@
+---
 name: Test, Build, and Push Docker Image
 
-on:
+on:  # yamllint disable-line rule:truthy
   push:
     branches: ["main"]
     tags:
@@ -12,11 +13,11 @@ on:
 
 # GOAL:
 #  on pushes to main branch or v* tag
-#    - ruff, mdlint, test
+#    - ruff, mdlint, yamllint, test
 #  on PRs against main branch
-#    - ruff, mdlint, test
+#    - ruff, mdlint, yamllint, test
 #  on Release creation
-#    - ruff, mdlint, test
+#    - ruff, mdlint, yamllint, test
 #  on the above events when the triggered actor is the repo owner
 #    - docker
 #  on Release creation (ex: maybe a maintainer that isn't repo owner)
@@ -44,18 +45,30 @@ jobs:
   mdlint:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out repository code
-      uses: actions/checkout@v4
-    
-    - name: Run markdownlint-cli2
-      uses: DavidAnson/markdownlint-cli2-action@v17
-      # file globbing configured in .markdownlint-cli2.yaml
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Run markdownlint-cli2
+        uses: DavidAnson/markdownlint-cli2-action@v17
+        # file globbing configured in .markdownlint-cli2.yaml
+
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Run yamllint
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: .
 
   test:
     runs-on: ubuntu-latest
     needs:
       - "ruff"
       - "mdlint"
+      - "yamllint"
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12"]
@@ -117,3 +130,4 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
+...
