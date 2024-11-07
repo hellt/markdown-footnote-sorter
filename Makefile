@@ -6,7 +6,7 @@ all: lint test
 
 .PHONY: clean
 clean:
->   @docker rmi pipelinecomponents/ruff \
+>   @docker rmi ghcr.io/astral-sh/ruff:0.7.2 \
 >    davidanson/markdownlint-cli2:v0.14.0 \
 >    cytopia/yamllint
 
@@ -24,10 +24,10 @@ mdlint:
 # Python linting and formatting
 .PHONY: ruff
 ruff:
->   @docker run --rm -v ${PWD}:/workdir pipelinecomponents/ruff \
+>   @docker run --rm -v ${PWD}:/workdir ghcr.io/astral-sh/ruff:0.7.2 \
 >    check /workdir
->   @docker run --rm -v ${PWD}:/workdir pipelinecomponents/ruff \
->     format --check --diff /workdir
+>   @docker run --rm -v ${PWD}:/workdir ghcr.io/astral-sh/ruff:0.7.2 \
+>    format --check --diff /workdir
 
 # Python unit tests
 .PHONY: test
