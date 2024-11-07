@@ -11,14 +11,16 @@ on:
     types: ["created"]
 
 # GOAL:
-#  - run ruff job on pushes to main branch or v* tag
-#  - run ruff job on PRs against main branch
-#  - run ruff job on Release creation
-#  - run test job on pushes to main branch or v* tag
-#  - run test job on PRs against main branch
-#  - run test job on Release creation
-#  - run docker job on the above events when the triggered actor is the repo owner
-#  - run docker job on Release creation (ex: maybe a maintainer that isn't repo owner)
+#  on pushes to main branch or v* tag
+#    - ruff, mdlint, test
+#  on PRs against main branch
+#    - ruff, mdlint, test
+#  on Release creation
+#    - ruff, mdlint, test
+#  on the above events when the triggered actor is the repo owner
+#    - docker
+#  on Release creation (ex: maybe a maintainer that isn't repo owner)
+#    - docker
 
 jobs:
   ruff:
@@ -39,10 +41,21 @@ jobs:
           args: "format --check --diff"
           changed-files: "true"
 
+  mdlint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+    
+    - name: Run markdownlint-cli2
+      uses: DavidAnson/markdownlint-cli2-action@v17
+      # file globbing configured in .markdownlint-cli2.yaml
+
   test:
     runs-on: ubuntu-latest
     needs:
       - "ruff"
+      - "mdlint"
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12"]
