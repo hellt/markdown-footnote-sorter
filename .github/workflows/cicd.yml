@@ -47,7 +47,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-    
+
       - name: Run markdownlint-cli2
         uses: DavidAnson/markdownlint-cli2-action@v17
         # file globbing configured in .markdownlint-cli2.yaml
