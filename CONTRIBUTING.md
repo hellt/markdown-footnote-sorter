@@ -33,9 +33,21 @@ For minimal dependencies, the "batteries included" [Python `unittest` framework]
 is utilized. (Other testing frameworks could be considered should additional
 testing features be needed.)
 
+Testing can be invoked via [`make test` (more information below)](#run-python-unit-tests)
+
+## Development Requirements
+
+* Python 3
+* GNU Make
+* Docker (Engine)
+
+> [!IMPORTANT]
+> If your development workstation has a security access control (ex: SELinux)
+> enabled, you will need to put it in a permissive mode for the Docker bind
+> mounts to function.
+
 ## Development Process
 
->
 > This section consists of suggestions.
 
 It is recommended to verify tests are successful before making any code changes.
@@ -48,8 +60,11 @@ code regression.
 
 1. From the `main` branch of your fork, [create a feature branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository)
 
-1. Validate [test cases run successfully](#running-unit-tests) before any
+1. Validate [test cases run successfully](#run-python-unit-tests) before any
   changes are made
+
+1. Verify [linting and formatting checks run successfully](#run-all-linters-in-one-shot)
+  before making any changes
 
 1. Make modifications
 
@@ -59,12 +74,98 @@ code regression.
 
 1. Re-run the unit tests to confirm they run successfully
 
+1. Re-run linting and formatting checks
+
+1. Fix up any linting or formatting errors
+
 1. When you are satisfied with the changes and it is ready for review,
   [submit a Pull Request (PR)](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
-## Running Unit Tests
+## Using `make` to streamline linting and testing
 
-Choose one of the below testing commands methods that suits your needs.
+This project uses GNU `make` to simplify the action of interacting with several
+linters and performing unit testing.
+Project dependencies and Python virtual environment are managed with `uv`.
+
+## Prequisites
+
+* Install GNU [`make`](https://www.gnu.org/software/make/) for your operating
+  system
+* Install Docker (Engine)
+
+## General
+
+### Default (all)
+
+* lint and test
+
+```bash
+make all
+
+# or simply
+make
+```
+
+### Clean
+
+* Removes the Docker images this Makefile utilizes
+
+`make clean`
+
+## Linting
+
+### Run all linters in one shot
+
+`make lint`
+
+### Run markdownlint-cli2 for Markdown linting
+
+`make mdlint`
+
+### Run ruff for Python linting
+
+`make ruff`
+
+### Run yamllint for Markdown linting
+
+`make yamllint`
+
+## Testing
+
+### Run Python unit tests
+
+`make test`
+
+## But I want to run linting locally
+
+> [!NOTE]
+> This project uses Docker images to avoid shipping or depending on other
+> projects, package managers, or languages (Node.js, Ruby).
+>
+> Non-Dockerized local testing is not supported by the repo owner.
+>
+> There are extra `make` targets in the Makefile in case you'd prefer local
+> linting and formatting.
+
+* Install GNU Make (same requirement as the main development pattern)
+* [Install `uv` for Python package management](https://docs.astral.sh/uv/#getting-started)
+* Install `npm` for Node.js package management
+
+```bash
+make localclean
+make localinit
+make localmdl
+make localruff
+make localyaml
+```
+
+## Running Unit Tests Manually
+
+> [!NOTE]
+> This information is somewhat historical since incorporating the Makefile,
+> but could prove useful.
+
+Choose one of the below testing command options that suits your needs.
 
 > [!IMPORTANT]
 > The commands below are to be run from the top level of the project.
