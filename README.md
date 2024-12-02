@@ -32,18 +32,20 @@ Inspired by <http://www.leancrew.com/all-this/2012/09/tidying-markdown-reference
     ```
 
 1. Or from the GitHub UI, run the container in a :sparkles:[Codespace](https://docs.github.com/en/codespaces/overview):
+   1. With the click of a button
+      * [![Launch in GitHub Codespaces](https://img.shields.io/badge/fnsort-Launch%20Codespace-238636?logo=github)](https://github.com/codespaces/new/hellt/markdown-footnote-sorter?devcontainer_path=.devcontainer%2Fdevcontainer.json)
+   1. Manual steps
+      * From this project's main page, click **Code**, then **Codespace**.
+      * Choose **Create codespace on \<branch_name\>**
 
-   * From this project's main page, click **Code**, then **Codespace**.
-   * Choose **Create codespace on &lt;branch_name&gt;**
+         This [creates a codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository)
+         with the default resources (currently 2 CPU, 8 GB RAM, 32 GB Storage).
 
-   This [creates a codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository)
-   with the default resources (currently 2 CPU, 8 GB RAM, 32 GB Storage).
+      * :rocket: Run fnsort on your markdown file:
 
-   * :rocket: Run fnsort on your markdown file:
-
-   ```bash
-   /app/fnsort.py path/to/doc.md
-   ```
+         ```bash
+         /app/fnsort.py path/to/doc.md
+         ```
 
 > [!IMPORTANT]
 > Keep in mind there are
