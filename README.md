@@ -50,10 +50,9 @@ Inspired by <http://www.leancrew.com/all-this/2012/09/tidying-markdown-reference
 > [!IMPORTANT]
 > Keep in mind there are
 > [monthly limits measured in core hours](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts)
-and to
-[stop your codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/stopping-and-starting-a-codespace)
-:stop_sign: when you're not using it to conserve your monthly core hours
-allowance.
+> and to [stop your codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/stopping-and-starting-a-codespace)
+> :stop_sign: when you're not using it to conserve your monthly core hours
+> allowance.
 
 ## Command Line Arguments
 
