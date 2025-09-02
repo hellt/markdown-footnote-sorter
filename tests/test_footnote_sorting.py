@@ -12,9 +12,6 @@ def set_command_line_args(args):
 class TestDefaults(unittest.TestCase):
     @classmethod
     def setUpClass(self):
-        # example markdown files intentionally have had trailing EOL trimmed
-        #   from the end of the file (EOF)
-
         path = "tests/default"
 
         with open(f"{path}/example.md") as fh:
@@ -139,9 +136,6 @@ class TestFootnotesMustBeLast(unittest.TestCase):
 class TestAdjacentFootnotes(unittest.TestCase):
     @classmethod
     def setUpClass(self):
-        # example markdown files intentionally have had trailing EOL trimmed
-        #   from the end of the file (EOF)
-
         path = "tests/adjacent"
 
         with open(f"{path}/adjacent.md") as fh:
