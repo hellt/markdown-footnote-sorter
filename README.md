@@ -1,6 +1,6 @@
 # markdown-footnote-sorter
 
-A script to sort footnotes in a markdown file.
+A script to sort footnotes in a Markdown file.
 
 Reads a Markdown file passed as the first argument and sorts footnotes.
 The reference links will be numbered in
@@ -41,7 +41,7 @@ Inspired by <http://www.leancrew.com/all-this/2012/09/tidying-markdown-reference
          This [creates a codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository)
          with the default resources (currently 2 CPU, 8 GB RAM, 32 GB Storage).
 
-      * :rocket: Run fnsort on your markdown file:
+      * :rocket: Run fnsort on your Markdown file:
 
          ```bash
          /app/fnsort.py path/to/doc.md
@@ -50,10 +50,9 @@ Inspired by <http://www.leancrew.com/all-this/2012/09/tidying-markdown-reference
 > [!IMPORTANT]
 > Keep in mind there are
 > [monthly limits measured in core hours](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts)
-and to
-[stop your codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/stopping-and-starting-a-codespace)
-:stop_sign: when you're not using it to conserve your monthly core hours
-allowance.
+> and to [stop your codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/stopping-and-starting-a-codespace)
+> :stop_sign: when you're not using it to conserve your monthly core hours
+> allowance.
 
 ## Command Line Arguments
 
@@ -70,7 +69,7 @@ identified during sorting.
 
 Retain or keep inline reference and footnote names.
 This prevents the default behavior of replacing the names with numbers.
-Footnotes at the end of the markdown are **still sorted**.
+Footnotes at the end of the Markdown are **still sorted**.
 
 `fnsort.py path/to/doc.md --keepnames`
 
