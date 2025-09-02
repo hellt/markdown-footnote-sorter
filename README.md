@@ -1,6 +1,6 @@
 # markdown-footnote-sorter
 
-A script to sort footnotes in a markdown file.
+A script to sort footnotes in a Markdown file.
 
 Reads a Markdown file passed as the first argument and sorts footnotes.
 The reference links will be numbered in
@@ -41,7 +41,7 @@ Inspired by <http://www.leancrew.com/all-this/2012/09/tidying-markdown-reference
          This [creates a codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository)
          with the default resources (currently 2 CPU, 8 GB RAM, 32 GB Storage).
 
-      * :rocket: Run fnsort on your markdown file:
+      * :rocket: Run fnsort on your Markdown file:
 
          ```bash
          /app/fnsort.py path/to/doc.md
@@ -70,7 +70,7 @@ identified during sorting.
 
 Retain or keep inline reference and footnote names.
 This prevents the default behavior of replacing the names with numbers.
-Footnotes at the end of the markdown are **still sorted**.
+Footnotes at the end of the Markdown are **still sorted**.
 
 `fnsort.py path/to/doc.md --keepnames`
 
